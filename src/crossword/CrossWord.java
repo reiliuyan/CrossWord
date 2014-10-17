@@ -16,6 +16,7 @@ public class CrossWord {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        System.out.println("Begin working with cross word puzzle!");
     }
     
 }
