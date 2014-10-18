@@ -13,7 +13,9 @@ package crossword;
  * 10/17/2014
  */
 public class CrossWordPanel {
-    private char[][] panel;
+    private CrossWordPanelGrid[][] panel;
+    public static String VERTICAL = "vertical";
+    public static String HORIZONTAL = "horizontal";
     
     /**
      * Constructor with no argument
@@ -27,7 +29,12 @@ public class CrossWordPanel {
      * @param n the number of grids in a row / column
      */
     public CrossWordPanel(int n){
-        panel = new char[n][n];
+        panel = new CrossWordPanelGrid[n][n];
+        for (int i=0; i<n;i++){
+            for (int j=0; j<n;j++){
+                panel[i][j]= new CrossWordPanelGrid();
+            }
+        }
     }
     
     /**
@@ -37,9 +44,12 @@ public class CrossWordPanel {
      * @param c the char to be set
      */
     public void setGrid(int row, int column, char c){
-        panel[row][column] = c;
+        panel[row][column].set(c);
     }
     
+    public void addWord(String word, int row, int column, String direction){
+        
+    }
     /**
      * Prints out the whole panel. 
      */
@@ -48,7 +58,7 @@ public class CrossWordPanel {
         for (int i=0; i<panel.length;i++){
             System.out.print("|");
             for (int j=0; j<panel.length;j++){
-                System.out.print(" "+panel[i][j]+" ");
+                System.out.print("  "+panel[i][j].get()+"  ");
                 System.out.print("|");
             }
             System.out.print("\n");
@@ -62,16 +72,17 @@ public class CrossWordPanel {
      */
     private void printLine(int n){
         for (int i=0; i<n; i++){
-            System.out.print("----");
+            System.out.print("------");
         }
         System.out.print("\n");
     }
     
     public static void main(String[] args){
-        CrossWordPanel cwp = new CrossWordPanel(5);
-        for (int i=0; i<5;i++){
-            for (int j=0; j<5;j++){
-                cwp.setGrid(i, j, 'a');
+        int n = 10;
+        CrossWordPanel cwp = new CrossWordPanel(n);
+        for (int i=0; i<n;i++){
+            for (int j=0; j<n;j++){
+                cwp.setGrid(i, j, 'b');
             }
         }
         cwp.showPanel();
