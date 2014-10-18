@@ -14,6 +14,7 @@ package crossword;
  */
 public class CrossWordPanel {
     private CrossWordPanelGrid[][] panel;
+    int size;
     public static String VERTICAL = "vertical";
     public static String HORIZONTAL = "horizontal";
     
@@ -35,6 +36,7 @@ public class CrossWordPanel {
                 panel[i][j]= new CrossWordPanelGrid();
             }
         }
+        size = n;
     }
     
     /**
@@ -48,6 +50,16 @@ public class CrossWordPanel {
     }
     
     public void addWord(String word, int row, int column, String direction){
+        int length = word.length();
+        if ((direction.equals(CrossWordPanel.HORIZONTAL) && column+length > size)
+                ||(direction.equals(CrossWordPanel.VERTICAL) && row+length > size) ){
+            System.out.println("No enough space.");
+            return;
+        }
+        char[] chars = word.toCharArray();
+        if (direction.equals(CrossWordPanel.HORIZONTAL)){
+            
+        }
         
     }
     /**
